@@ -23,3 +23,9 @@ jobs:
         run: |
           git remote add gitlab https://token:${{ secrets.GITLAB_TOKEN }}@gitlab.com/kampyacr/hola-github.git
           git push gitlab main
+          
+      - name: Push to Codeberg
+        run: |
+          git remote add codeberg https://${{ secrets.CODEBERG_TOKEN }}@codeberg.org/kampyacr/hola-github.git
+          git push codeberg main
+          
