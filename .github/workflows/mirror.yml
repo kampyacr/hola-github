@@ -1,0 +1,28 @@
+name: Mirror to GitLab
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your_email@example.com"
+
+      - name: Push to GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          git remote add gitlab git@gitlab.com:kampyacr/hola-github.git
+          git push --mirror gitlab
+
+      
