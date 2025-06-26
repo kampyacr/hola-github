@@ -22,4 +22,4 @@ jobs:
       - name: Push to GitLab
         run: |
           git remote add gitlab https://token:${{ secrets.GITLAB_TOKEN }}@gitlab.com/kampyacr/hola-github.git
-          git push --mirror gitlab
+          git push --mirror gitlab main
