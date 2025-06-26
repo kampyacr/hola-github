@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Clona todo el historial
 
       - name: Set up Git
         run: |
@@ -20,5 +22,4 @@ jobs:
       - name: Push to GitLab
         run: |
           git remote add gitlab https://token:${{ secrets.GITLAB_TOKEN }}@gitlab.com/kampyacr/hola-github.git
-          git push --force gitlab main
-
+          git push gitlab main  # Evita el uso de --force
